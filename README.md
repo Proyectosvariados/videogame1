@@ -1,158 +1,70 @@
-# videogame1
+# Roguelike Medieval Fantasy
 
-This project is a videogame co-created by **Adriano García**, **Giralda Milena**, and **Nicolás Hideo Himanichi** under **KAN-7**.
+**Co-created by [Adriano García-Giralda Milena](https://github.com/adrianoggm) and [Nicolás Hideo Vílchez Imanishi](https://github.com/your-link)**
 
----
+## Overview
 
-# Video Game Project Overview
+This project is a video game developed in **C++** that combines classic roguelike elements with real-time gameplay and multiple players (1-4). The game is set in a medieval fantasy world where magic and melee coexist, and features procedural dungeon generation with a tileset similar to the style of *The Binding of Isaac* (4x4 cell layout).
 
-## 1. Project Description
+## Features
 
-This project is a **[brief description of your game]** built using **[game engine/technology stack]**. Our main goals are to:
+- **Multiplayer:** Supports 1 to 4 players.
+- **Real-time Gameplay:** Experience fast-paced action with various AI behaviors.
+- **Procedural Dungeon Generation:** A dynamic 4x4 cell dungeon is generated each game using a customizable tileset.
+- **Classes:** Choose from three distinct classes:
+  - **Melee (Cuerpo a Cuerpo)**
+  - **Ranged (Distancia)**
+  - **Support (Soporte)**
+- **Enemies:**
+  - **Melee Enemies** (close combat)
+  - **Physical Ranged Enemies**
+  - **Magical Ranged Enemies**
+  - **Boss Enemy** (with experience parameter)
+- **Attributes:** Each character (players and enemies) have attributes such as:
+  - Physical Attack
+  - Physical Defense
+  - Speed
+  - Attack Speed
+  - Life (HP)
+  - Magical Defense
+  - Magical Attack
+  - Critical Hit Chance
+  - Range
+  - Life Regeneration
+  - Level
+- **Inventory & Equipment:** Manage your items with a full inventory system including equipment slots for:
+  - Helmet (casco)
+  - Armor (armadura)
+  - Weapon (arma)
+  - Backpack (mochila)
+- **Combat Mechanics:**
+  - Basic Attack
+  - Blocking
+- **Abilities System:**
+  - Active Abilities (with cooldown)
+  - Passive Abilities
+  - Level up your abilities (2 active and 2 passive in a skill tree)
+- **Experience and Leveling:** Gain experience and level up your character.
+- **Game Progression:** 5 levels culminating in a boss battle.
+- **User Interface:**
+  - Start screen with options: *Play*, *Continue*, *Options*, *Credits*, *Exit*
+  - Save game management
+  - Inventory menu with options to close, save, and finish the game.
+  - HUD showing the party's health, the player’s own health, and the boss's health.
+- **Sprite Management:** Automatic sprite scaling and tile adjustments for the dungeon.
 
-- **Goal 1:** *E.g., Create an immersive 2D platformer with unique power-ups*
-- **Goal 2:** *E.g., Focus on fast-paced multiplayer interactions*
-- **Goal 3:** *E.g., Release across multiple platforms (PC, console, etc.)*
+## Getting Started
 
-### Key Features
+### Prerequisites
 
-- **Feature A:** *E.g., Procedurally generated levels*
-- **Feature B:** *E.g., Skill tree and leveling system*
-- **Feature C:** *E.g., Online co-op mode*
+- A C++ compiler supporting C++11 (or higher).
+- [CMake](https://cmake.org/) (if you choose to use it for building the project) or a suitable Makefile.
+- SDL, SFML, or another graphics library (if you plan to implement a graphical interface).
 
----
+### Building the Project
 
-## 2. Repository Structure
+1. **Clone the Repository:**
 
-Below is an overview of how the repository is organized:
-
-```plaintext
-├── Assets/             # Art, sounds, music, etc.
-├── Docs/               # Project documentation (including this file)
-├── Source/             # Game source code
-│   ├── Gameplay/       # Game logic and scripts
-│   ├── UI/             # User interface elements
-│   └── ...  
-├── Tests/              # Automated tests
-└── README.md           # General project info
-```
-
-## 3. Branching Strategy
-
-We will adopt a Gitflow-inspired workflow with the following branches:
-
-main: Contains production-ready code.
-
-develop: Integrates features for the upcoming release.
-
-feature/<JIRA-KEY>: For new features.
-
-bugfix/<JIRA-KEY>: For bug fixes.
-
-release/<version>: Used for release preparation and final testing.
-
-hotfix/<JIRA-KEY>: For critical fixes on main.
-For more details on Gitflow, see the Gitflow Workflow.
-
-## 4. Commit Message Standard Using Jira
-Our commits must follow a standardized format that references Jira issues.
-
-### 4.1 Commit Message Format
-
-<ISSUE-KEY>: <Brief summary of changes>
-
-[Optional] Detailed description or bullet points:
-- Why this change was necessary
-- What exactly was changed
-- How to test/verify
-- 
-### 4.2 Examples
-Feature Commit Example:
-
-GAME-101: Implement player health regeneration
-
-- Added new health regeneration script under Source/Gameplay
-- Modified player stats to include 'healthRegenRate'
-- Tested the regeneration with multiple scenarios locally
-
-Bugfix Commit Example:
-GAME-202: Fix collision bug in level 3
-
-- Updated collision detection script to handle out-of-bounds enemies
-- Confirmed fix using test cases in Tests/CollisionTest
-Refactoring / Minor Change
-
-GAME-310: Refactor inventory system for better performance
-
-- Simplified data structures in Inventory.cs
-- Removed redundant calls during item equip/unequip operations
-  
-### 4.3 Commit Description Rules
-
-Mandatory Jira Issue Key: Start every commit message with the Jira issue key (e.g., GAME-123:).
-
-Concise Summary: Provide a brief summary (50–72 characters) of what the commit does.
-
-Detailed Description (Optional): Use bullet points or short paragraphs to explain why and how the changes were made.
-
-Scope: Preferably, each commit should reference one Jira ticket. If multiple tickets must be referenced (not recommended), list them (e.g., GAME-101, GAME-102:).
-
-Grammar & Clarity: Ensure clear, proper grammar and spelling to aid team communication.
-
-## 5. Pull Request & Code Review
-Pull Request Guidelines
-
-Title: Should include the Jira issue key and a brief summary.
-Example: [GAME-101] Implement player health regeneration
-
-Description: Provide details on what was changed and why. If the Jira ticket is detailed, a brief description with a reference to the ticket is sufficient.
-
-Reviewers: Tag at least one teammate for review.
-
-Approval & Merging: After approval and passing all checks (e.g., tests, linting), merge the feature branch into develop.
-## 6. Testing & QA
-
-Unit Tests: Located under the Tests/ folder. Run tests using your preferred test runner (e.g., npm test, pytest, etc.).
-
-Integration Tests: Validate game flow and feature interactions. Document the test steps under Docs/Testing/.
-
-Performance Tests: Use the game engine’s profiler or related tools (e.g., Unity Profiler) to ensure stable FPS and memory usage.
-## 7. Definition of Done
-
-A user story or task is considered Done when:
-
-1. The feature is implemented and meets all acceptance criteria in the Jira ticket.
-2. Code review is completed with no pending changes.
-3. All tests (unit, integration, etc.) have passed successfully.
-4. Relevant documentation has been updated.
-5. The pull request is merged into develop or main (depending on the release stage).
-
-   
-## 8. Project Roadmap
-Below is a high-level timeline for future milestones. This roadmap will be updated as the project evolves.
-Milestone       Target Date   Features
-Alpha Release   YYYY-MM-DD    Basic gameplay loop, core mechanics, simple UI
-Beta Release    YYYY-MM-DD    Multiplayer support, final art assets, polish
-Full Release    YYYY-MM-DD    Steam/console deployment, final QA, marketing
-9. Additional Notes
-
-Communication: Use Jira comments for detailed discussions regarding features or tasks.
-
-Stand-Ups: Optional daily meetings to discuss progress and blockers.
-
-Documentation: Keep all project documentation in the Docs/ folder.
-Contact
-For questions or assistance, please reach out to:
-
-
-Lead Developer: [Name] – [email@company.com]
-
-Project Manager: [Name] – [email@company.com]
-
-Game Designer: [Name] – [email@company.com]
-Changelog
-
-v1.0: Initial release of the project guidelines.
-This markdown file is ready to be saved as README.md or any other appropriate file name. Let me know if you need further adjustments!
-
-
+   ```bash
+   git clone https://github.com/your-username/roguelike-medieval-fantasy.git
+   cd roguelike-medieval-fantasy
